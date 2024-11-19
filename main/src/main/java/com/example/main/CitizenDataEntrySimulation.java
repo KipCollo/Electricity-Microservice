@@ -6,8 +6,8 @@ import java.util.Random;
 
 public class CitizenDataEntrySimulation implements Runnable {
 
-    private static final String CITIZEN_API_URL = "http://localhost:8080/citizen/manual";
-    private final int citizenId;
+    private static final String CITIZEN_API_URL = "http://localhost:8082/citizen/manual";
+    private final double citizenId;
     private final RestTemplate restTemplate;
 
     public CitizenDataEntrySimulation(int citizenId) {
@@ -22,9 +22,8 @@ public class CitizenDataEntrySimulation implements Runnable {
             try {
                 // Simulate data entry
                 ElecricityConsumptionData data = new ElecricityConsumptionData();
-                data.setId(String.valueOf(citizenId));
+                data.setMeterId(String.valueOf(citizenId));
                 data.setConsumption(random.nextDouble() * 100);
-                data.setTimestamp(System.currentTimeMillis());
 
                 restTemplate.postForEntity(CITIZEN_API_URL, data, String.class);
                 

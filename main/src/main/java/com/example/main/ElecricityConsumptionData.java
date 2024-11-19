@@ -2,18 +2,17 @@ package com.example.main;
 
 public class ElecricityConsumptionData {
 
-    private String id;
+    private String meterId;
     private double consumption;
-    private long timestamp;
 
     // Getters and setters
 
     public String getId() {
-        return id;
+        return meterId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setMeterId(String meterId) {
+        this.meterId = meterId;
     }
 
     public double getConsumption() {
@@ -24,11 +23,4 @@ public class ElecricityConsumptionData {
         this.consumption = consumption;
     }
 
-    public long getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(long timestamp) {
-        this.timestamp = timestamp;
-    }
 }

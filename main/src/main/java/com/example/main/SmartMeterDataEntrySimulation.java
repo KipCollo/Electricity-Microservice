@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class SmartMeterDataEntrySimulation implements Runnable {
 
-    private static final String CITIZEN_API_URL = "http://localhost:8080/citizen/manual";
+    private static final String CITIZEN_API_URL = "http://localhost:8082/citizen/manual";
     private final int meterId;
     private final RestTemplate restTemplate;
 
@@ -22,9 +22,8 @@ public class SmartMeterDataEntrySimulation implements Runnable {
             try {
                 // Simulate data entry
                 ElecricityConsumptionData data = new ElecricityConsumptionData();
-                data.setId("meter-" + meterId);
+                data.setMeterId("meter-" + meterId);
                 data.setConsumption(random.nextDouble() * 100);
-                data.setTimestamp(System.currentTimeMillis());
 
                 restTemplate.postForEntity(CITIZEN_API_URL, data, String.class);
                 
