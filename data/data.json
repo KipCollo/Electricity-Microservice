@@ -1,0 +1,15 @@
+[
+    {
+        "meterId":"meter1",
+        "consumption":150
+    },
+    {
+        "meterId":"meter2",
+        "consumption":250
+    },
+    {
+        "meterId":"meter3",
+        "consumption":200
+    }
+
+]
