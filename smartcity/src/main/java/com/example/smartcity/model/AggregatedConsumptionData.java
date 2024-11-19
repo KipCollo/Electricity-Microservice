@@ -4,9 +4,9 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
- * Data transfer object for aggregated electricity consumption data.
+ * Data stored aggregated electricity consumption data.
  */
-@Document(collection = "aggregated_data")
+@Document(collection = "consumption_data")
 public class AggregatedConsumptionData {
 
     @Id

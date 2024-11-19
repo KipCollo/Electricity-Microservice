@@ -5,6 +5,8 @@ import com.example.smartcity.dto.ElectricityConsumptionData;
 import com.example.smartcity.repository.AggregatedConsumptionRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -19,6 +21,7 @@ public class SmartCityService {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
     private AggregatedConsumptionRepository aggregatedConsumptionRepository;
 
     private static final String PROVIDER_URL = "http://localhost:8081/providers/data";
@@ -33,6 +36,7 @@ public class SmartCityService {
         AggregatedConsumptionData aggregatedData = aggregate(data);
         saveAggregatedData(aggregatedData);
         return aggregatedData;
+        
     }
     
     /**
@@ -41,9 +45,13 @@ public class SmartCityService {
      * @return a list of electricity consumption data
      */
     private List<ElectricityConsumptionData> fetchProviderData() {
-        return restTemplate.getForObject(PROVIDER_URL, List.class);
+        return restTemplate.exchange(
+                PROVIDER_URL,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<ElectricityConsumptionData>>() {}
+        ).getBody();
     }
-
    
     /**
      * Aggregates the given list of electricity consumption data.
@@ -83,7 +91,12 @@ public class SmartCityService {
      *
      * @param data the aggregated electricity consumption data
      */
+
     private void saveAggregatedData(AggregatedConsumptionData data) {
-        aggregatedConsumptionRepository.save(data);
+        if (aggregatedConsumptionRepository != null) {
+            aggregatedConsumptionRepository.save(data);
+        } else {
+            throw new IllegalStateException("Repository is not initialized");
+        }
     }
 }

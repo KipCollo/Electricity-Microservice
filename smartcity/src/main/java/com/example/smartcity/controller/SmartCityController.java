@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.smartcity.dto.AggregatedConsumptionData;
+import com.example.smartcity.dto.ElectricityConsumptionData;
 import com.example.smartcity.service.SmartCityService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -32,7 +33,7 @@ public class SmartCityController {
     @GetMapping("/aggregate")
     @Operation(summary = "Aggregate Electricity Consumption Data", description = "Collect and aggregate electricity consumption data from various providers")
     public ResponseEntity<AggregatedConsumptionData> aggregateConsumptionData() {
-        var aggregatedData = smartCityService.aggregateData();
-        return ResponseEntity.ok(aggregatedData);
+        AggregatedConsumptionData data = smartCityService.aggregateData();
+        return ResponseEntity.ok(data);
     }
 }

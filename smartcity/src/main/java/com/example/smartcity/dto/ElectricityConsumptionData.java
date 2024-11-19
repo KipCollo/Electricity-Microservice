@@ -1,14 +1,18 @@
 package com.example.smartcity.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Data transfer object for electricity consumption data.
  */
 public class ElectricityConsumptionData {
 
+    @JsonProperty("_id")
     private String id;
+    @JsonProperty("meterId")
     private int meterId;
-    private int consumption;
-    // private long timestamp;
+    @JsonProperty("consumption")
+    private double consumption;
 
     /**
      * Gets the ID of the data.
@@ -51,7 +55,7 @@ public class ElectricityConsumptionData {
      *
      * @return the electricity consumption
      */
-    public int getConsumption() {
+    public double getConsumption() {
         return consumption;
     }
 
@@ -60,7 +64,7 @@ public class ElectricityConsumptionData {
      *
      * @param consumption the electricity consumption
      */
-    public void setConsumption(int consumption) {
+    public void setConsumption(double consumption) {
         this.consumption = consumption;
     }
 

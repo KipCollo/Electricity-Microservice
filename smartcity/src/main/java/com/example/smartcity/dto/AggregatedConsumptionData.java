@@ -82,8 +82,8 @@ public class AggregatedConsumptionData {
         this.minConsumption = minConsumption;
     }
 
-    public void setProviderId(int i) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    // public void setProviderId(int i) {
+    //     throw new UnsupportedOperationException("Not supported yet.");
+    // }
 }
 

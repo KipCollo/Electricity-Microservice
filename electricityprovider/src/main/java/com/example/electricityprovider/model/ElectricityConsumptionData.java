@@ -12,7 +12,7 @@ public class ElectricityConsumptionData {
     @Id
     private String id;
     private String meterId;
-    private int consumption;
+    private double consumption;
 
     public String getId() {
         return id;
@@ -46,7 +46,7 @@ public class ElectricityConsumptionData {
      *
      * @return the electricity consumption
      */
-    public int getConsumption() {
+    public double getConsumption() {
         return consumption;
     }
 
@@ -55,7 +55,7 @@ public class ElectricityConsumptionData {
      *
      * @param consumption the electricity consumption
      */
-    public void setConsumption(int consumption) {
+    public void setConsumption(double consumption) {
         this.consumption = consumption;
     }
 

@@ -3,7 +3,7 @@ package com.example.citizen.dto;
 public class ElecricityConsumptionData {
 
     private String meterId;
-    private int consumption;
+    private double consumption;
     
     public String getMeterId() {
         return meterId;
@@ -11,10 +11,10 @@ public class ElecricityConsumptionData {
     public void setMeterId(String meterId) {
         this.meterId = meterId;
     }
-    public int getConsumption() {
+    public double getConsumption() {
         return consumption;
     }
-    public void setConsumption(int consumption) {
+    public void setConsumption(double consumption) {
         this.consumption = consumption;
     }
 
